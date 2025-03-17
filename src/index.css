@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "HeyGotchaRegular";
+  src: local("HeyGotchaRegular"),
+    url("./assets/fonts/Hey Gotcha Regular.otf") format("opentype");
+  font-weight: normal;
+}
+
+*{
+  margin:0px;
+  padding-bottom: 0px;
+  padding-right: 0;
+  color: #FBDFB6;
+  background-color: #170D0C;
+  font-family: "HeyGotchaRegular";
+  font-size: 80px;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+}

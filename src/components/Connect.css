@@ -1,0 +1,12 @@
+#connectDiv{
+    margin-top: 240px;
+    font-size: 40px;
+}
+
+#connectDiv a{
+    text-decoration: none;
+}
+
+#connectDiv a:hover{
+    text-decoration: underline;
+}

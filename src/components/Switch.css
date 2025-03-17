@@ -1,0 +1,9 @@
+#switchDiv{
+    display: grid;
+    background-color: transparent;
+    justify-content: end;
+    z-index: 3;
+    top:2px;
+    right: 5px;
+    position: fixed;
+}
