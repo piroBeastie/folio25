@@ -3,7 +3,10 @@ import './Footer.css'
 function Footer(){
     return(
         <>
-            <p id="footer">2025</p>
+            <div id="footerDiv">
+                <p id="footer">2025</p>
+                <p id="hire">Available for Hire!</p>
+            </div>
         </>
     )
 }

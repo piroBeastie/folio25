@@ -13,6 +13,7 @@
   background-color: #170D0C;
   font-family: "HeyGotchaRegular";
   font-size: 80px;
+  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar{
