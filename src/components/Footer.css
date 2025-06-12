@@ -1,29 +1,22 @@
 #footerDiv{
-    margin-top: 160px;
-    background-color:#FBDFB6;
-    width: 100%;
-    height:1100px;
+    width: 100vw;
+    height:100vh;
     position: relative;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
     z-index:4;
     overflow-y: hidden;
 }
 
 #footer{
-    position: absolute;
-    top:0;
-    margin-left: -100px;
-    margin-top: -150px;
-    font-size: 1135px;
+    position:absolute;
+    bottom:0;
+    font-size:1100px;
+    margin-bottom: -180px;
     background-color: transparent;
-    color: #170D0C;
 }
 
 #hire{
-    background-color:#FBDFB6;
-    color: #170D0C;
     position: absolute;
-    bottom: 0;
+    top: 0;
 }
