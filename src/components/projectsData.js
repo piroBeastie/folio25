@@ -26,7 +26,7 @@ const projectsData=[
     {   
         key:5,
         name:"Retro CSS",
-        link:"https://pirobeastie.github.io/Job_Tracker_CSS-OG/",
+        link:"https://retro-theme-css.vercel.app/",
         year:2024,
     }
 ]
