@@ -23,8 +23,14 @@ const projectsData=[
         link:"https://boisterous-mermaid-5baa81.netlify.app/",
         year:2025,
     },
-    {   
+    {
         key:5,
+        name:"Book Recommendation",
+        link:"https://pirobeastie.github.io/Book_Recommendation/",
+        year:2024,
+    },
+    {   
+        key:6,
         name:"Retro CSS",
         link:"https://retro-theme-d8h0g653r-pirobeasties-projects.vercel.app/",
         year:2024,
