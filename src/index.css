@@ -1,19 +1,18 @@
-@font-face {
-  font-family: "HeyGotchaRegular";
-  src: local("HeyGotchaRegular"),
-    url("./assets/fonts/Hey Gotcha Regular.otf") format("opentype");
-  font-weight: normal;
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #FBDFB6;
 }
 
 *{
-  margin:0px;
-  padding-bottom: 0px;
-  padding-right: 0;
-  /* color: #FBDFB6;
-  background-color: #170D0C; */
-  font-family: "HeyGotchaRegular";
-  font-size: 80px;
-  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  font-weight: 750;
+  font-size: clamp(26px, 5.5vw, 80px);
+  letter-spacing: -0.02em;
+  box-sizing: border-box;
 }
 
 .light{
@@ -26,12 +25,12 @@
 }
 
 .dark{
-  color:#170D0C;
+  color: #170D0C;
   background-color: #FBDFB6;
 }
 
 .dark a{
-  color:#170D0C;
+  color: #170D0C;
 }
 
 ::-webkit-scrollbar{

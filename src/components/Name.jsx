@@ -1,15 +1,13 @@
 import './Name.css'
 
-function Name(){
-    return(
-        <div id="nav">
-                <p className='navText'><s>Nanak</s></p>
-                <p className='navText'><s>Chahal</s></p>
-            {/* <div id="navRight">
-                <p>&bull;</p>
-            </div> */}
-        </div>
-    )
+// Spans must be on a single line so JSX doesn't insert whitespace
+// between them — the loader text "nanakchahal" must render seamlessly.
+function Name() {
+  return (
+    <div id="loader">
+      <span id="letterN">n</span><span className="loaderFill" id="fillAnak">anak</span><span id="letterC">c</span><span className="loaderFill" id="fillHahal">hahal</span>
+    </div>
+  )
 }
 
-export default Name;
+export default Name

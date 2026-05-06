@@ -1,12 +1,23 @@
-#nav{
-    display: grid;
-    top:2px;
-    left:5px;
-    z-index: 3;
+#loader {
     position: fixed;
-    background-color:transparent;
+    z-index: 100;
+    top: 50%;
+    background-color: transparent;
+    white-space: nowrap;
+    opacity: 0;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    color: #FBDFB6;
+    mix-blend-mode: difference;
 }
 
-.navText,s,#nav{
-    background-color: transparent;
+#loader > span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: inherit;
+}
+
+.loaderFill {
+    overflow: hidden;
+    width: 0;
 }
