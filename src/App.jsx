@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
@@ -9,7 +9,28 @@ import Footer from './components/Footer'
 gsap.registerPlugin(ScrollTrigger)
 
 function App() {
-  const [theme] = useState('dark')
+  const theme = 'dark'
+
+  const cursorRef = useRef(null)
+
+  useEffect(() => {
+    const cursor = cursorRef.current
+    if (!cursor) return
+
+    const onMove = (e) => {
+      cursor.style.left = e.clientX + 'px'
+      cursor.style.top = e.clientY + 'px'
+
+      const el = document.elementFromPoint(e.clientX, e.clientY)
+      if (el) {
+        const interactive = el.closest('a, button, [role="button"]')
+        const size = interactive ? 30 : 20
+        gsap.to(cursor, { width: size, height: size, duration: 0.2, ease: 'power2.out', overwrite: 'auto' })
+      }
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
 
   useEffect(() => {
     const fontsReady =
@@ -25,6 +46,7 @@ function App() {
         smoothWheel: true,
       })
 
+      window.__lenis = lenis
       lenis.on('scroll', ScrollTrigger.update)
       const rafFn = (time) => lenis.raf(time * 1000)
       gsap.ticker.add(rafFn)
@@ -229,6 +251,7 @@ function App() {
 
   return (
     <div className={theme}>
+      <div ref={cursorRef} id="custom-cursor" />
       <Name />
       <div id="content">
         <Scrollable />

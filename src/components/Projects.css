@@ -1,4 +1,5 @@
 #projectRefs{
+    position: relative;
     margin-top: clamp(80px, 14vw, 200px);
 }
 
@@ -41,6 +42,28 @@
     visibility: visible;
 }
 
+.projectPreviewWrap {
+    position: absolute;
+    right: calc(100% + 3vw);
+    top: 0;
+    pointer-events: none;
+    z-index: 100;
+    overflow: hidden;
+    width: clamp(200px, 22vw, 380px);
+    aspect-ratio: 16 / 10;
+    border-radius: 8px;
+    background-color: #170D0C;
+}
+
+.projectPreview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 @media (max-width: 768px) {
     #projectRefs {
         margin-bottom: clamp(60px, 12vw, 100px);
@@ -56,5 +79,9 @@
     .projectPara .sup {
         order: -1;
         margin-right: 0.4em;
+    }
+
+    .projectPreviewWrap {
+        display: none;
     }
 }

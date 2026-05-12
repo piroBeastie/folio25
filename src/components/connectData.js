@@ -14,6 +14,11 @@ const connectData = [
     name: 'Instagram',
     link: 'https://www.instagram.com/_nanakchahal?igsh=MmE2bzF1eG05YjZ0',
   },
+  {
+    key: 4,
+    name: 'LinkedIn',
+    link: 'https://linkedin.com/in/nanakchahal',
+  },
 ]
 
 export default connectData

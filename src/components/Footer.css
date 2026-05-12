@@ -20,7 +20,8 @@
     background: transparent;
     border: none;
     color: inherit;
-    padding: 0;
+    padding: 16px 24px;
+    margin: -16px -24px;
     font-family: inherit;
     font-size: 18px;
     font-weight: 500;
