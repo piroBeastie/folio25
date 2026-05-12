@@ -61,7 +61,7 @@
     line-height: 1;
 }
 
-.footerBackTop:hover .letterStack{
+.footerBackTop.hovered .letterStack{
     transform: translateY(0);
 }
 

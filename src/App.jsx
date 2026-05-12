@@ -12,24 +12,48 @@ function App() {
   const theme = 'dark'
 
   const cursorRef = useRef(null)
+  const lastMouse = useRef({ x: 0, y: 0 })
+  const scrollHovered = useRef(null)
 
   useEffect(() => {
     const cursor = cursorRef.current
     if (!cursor) return
 
+    const setCursor = (size) => gsap.to(cursor, { width: size, height: size, duration: 0.2, ease: 'power2.out', overwrite: 'auto' })
+
     const onMove = (e) => {
+      lastMouse.current = { x: e.clientX, y: e.clientY }
       cursor.style.left = e.clientX + 'px'
       cursor.style.top = e.clientY + 'px'
-
-      const el = document.elementFromPoint(e.clientX, e.clientY)
-      if (el) {
-        const interactive = el.closest('a, button, [role="button"]')
-        const size = interactive ? 30 : 20
-        gsap.to(cursor, { width: size, height: size, duration: 0.2, ease: 'power2.out', overwrite: 'auto' })
-      }
     }
+
+    const onOver = (e) => {
+      const target = e.target.closest('a, button, [role="button"]')
+      if (target === scrollHovered.current) return
+      if (scrollHovered.current) scrollHovered.current.classList.remove('hovered')
+      if (target) target.classList.add('hovered')
+      scrollHovered.current = target || null
+      setCursor(target ? 30 : 20)
+    }
+
+    const onOut = (e) => {
+      const target = e.target.closest('a, button, [role="button"]')
+      if (!target) return
+      const related = e.relatedTarget?.closest('a, button, [role="button"]')
+      if (related === target) return
+      target.classList.remove('hovered')
+      if (scrollHovered.current === target) scrollHovered.current = null
+      setCursor(related ? 30 : 20)
+    }
+
     window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
+    document.addEventListener('mouseover', onOver)
+    document.addEventListener('mouseout', onOut)
+    return () => {
+      window.removeEventListener('mousemove', onMove)
+      document.removeEventListener('mouseover', onOver)
+      document.removeEventListener('mouseout', onOut)
+    }
   }, [])
 
   useEffect(() => {
@@ -47,7 +71,19 @@ function App() {
       })
 
       window.__lenis = lenis
-      lenis.on('scroll', ScrollTrigger.update)
+      lenis.on('scroll', () => {
+        ScrollTrigger.update()
+        const { x, y } = lastMouse.current
+        if (!x && !y) return
+        const el = document.elementFromPoint(x, y)
+        const target = el?.closest('a, button, [role="button"]') || null
+        if (target !== scrollHovered.current) {
+          const opts = { clientX: x, clientY: y, bubbles: true }
+          if (scrollHovered.current) scrollHovered.current.dispatchEvent(new MouseEvent('mouseout', { ...opts, relatedTarget: target }))
+          if (target) target.dispatchEvent(new MouseEvent('mouseover', { ...opts, relatedTarget: scrollHovered.current }))
+          scrollHovered.current = target
+        }
+      })
       const rafFn = (time) => lenis.raf(time * 1000)
       gsap.ticker.add(rafFn)
       gsap.ticker.lagSmoothing(0)
@@ -116,14 +152,6 @@ function App() {
       gsap.set('#footerYear', { opacity: 0, y: 120 })
       gsap.set('#footerLine', { scaleX: 0 })
       gsap.set('.footerBackTop', { opacity: 0, y: 20 })
-
-      // ── Back-to-top click handler ─────────────────────────────────
-      const backToTopBtn = document.querySelector('.footerBackTop')
-      if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', () => {
-          lenis.scrollTo(0, { duration: 2 })
-        })
-      }
 
       // ── Master timeline ───────────────────────────────────────────
       const tl = gsap.timeline()

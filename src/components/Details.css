@@ -27,7 +27,7 @@
     100% { transform: scaleX(0); transform-origin: right; }
 }
 
-.creativeWord:hover::after {
+.creativeWord.hovered::after {
     animation: none;
     transform: scaleX(1);
     height: 0.075em;
