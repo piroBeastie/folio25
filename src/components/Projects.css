@@ -27,7 +27,8 @@
     transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-#projectRefs a.hovered::after{
+#projectRefs a.hovered::after,
+#projectRefs a.active::after{
     transform: scaleX(1);
     transform-origin: left center;
 }
@@ -79,9 +80,49 @@
     .projectPara .sup {
         order: -1;
         margin-right: 0.4em;
+        visibility: visible;
     }
 
     .projectPreviewWrap {
         display: none;
+    }
+
+    .mobilePreview {
+        display: grid;
+        grid-template-rows: 0fr;
+        opacity: 0;
+        transition: grid-template-rows 0.55s cubic-bezier(0.65, 0, 0.35, 1),
+                    opacity 0.4s ease,
+                    margin 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .mobilePreview.open {
+        grid-template-rows: 1fr;
+        opacity: 1;
+        margin: 12px 0 24px;
+    }
+
+    .mobilePreviewInner {
+        overflow: hidden;
+        min-height: 0;
+    }
+
+    .mobilePreview img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        border-radius: 8px;
+        display: block;
+        background-color: #170D0C;
+    }
+
+    .mobileVisit {
+        display: block;
+        text-align: right;
+        margin-top: 10px;
+        font-size: clamp(13px, 3.6vw, 16px);
+        font-weight: 600;
+        letter-spacing: 0;
+        text-decoration: none;
     }
 }

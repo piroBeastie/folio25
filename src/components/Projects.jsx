@@ -1,4 +1,4 @@
-import { useRef, useCallback, useEffect } from 'react'
+import { useRef, useCallback, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import './Projects.css'
 import data from './projectsData.js'
@@ -10,6 +10,21 @@ function Projects() {
   const activeKey = useRef(null)
   const isVisible = useRef(false)
   const frontRef = useRef('A')
+
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
+  )
+  const [openKey, setOpenKey] = useState(null)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 768px)')
+    const onChange = () => {
+      setIsMobile(mq.matches)
+      if (!mq.matches) setOpenKey(null)
+    }
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [])
 
   useEffect(() => {
     data.forEach((proj) => { new Image().src = proj.image })
@@ -83,6 +98,11 @@ function Projects() {
     })
   }, [])
 
+  const handleMobileTap = useCallback((proj, e) => {
+    e.preventDefault()
+    setOpenKey((k) => (k === proj.key ? null : proj.key))
+  }, [])
+
   return (
     <div id="projectRefs">
       <div className="projectPreviewWrap" ref={wrapRef} style={{ display: 'none' }}>
@@ -90,18 +110,37 @@ function Projects() {
         <img className="projectPreview" ref={imgBRef} src="" alt="" />
       </div>
       {data.map((proj) => (
-        <p className="projectPara" key={proj.key}>
-          <a
-            href={proj.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            onMouseEnter={(e) => handleEnter(proj, e)}
-            onMouseLeave={handleLeave}
-          >
-            {proj.name}
-          </a>
-          <sup className="sup">({proj.year})</sup>
-        </p>
+        <div className="projectRow" key={proj.key}>
+          <p className="projectPara">
+            <a
+              href={proj.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={isMobile && openKey === proj.key ? 'active' : undefined}
+              onMouseEnter={isMobile ? undefined : (e) => handleEnter(proj, e)}
+              onMouseLeave={isMobile ? undefined : handleLeave}
+              onClick={isMobile ? (e) => handleMobileTap(proj, e) : undefined}
+            >
+              {proj.name}
+            </a>
+            <sup className="sup">({proj.year})</sup>
+          </p>
+          {isMobile && (
+            <div className={`mobilePreview${openKey === proj.key ? ' open' : ''}`}>
+              <div className="mobilePreviewInner">
+                <img src={proj.image} alt={proj.name} loading="lazy" />
+                <a
+                  className="mobileVisit"
+                  href={proj.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit ↗
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
       ))}
     </div>
   )

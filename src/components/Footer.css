@@ -96,11 +96,30 @@
 
 @media (max-width: 768px) {
     #footerDiv {
-        height: 40vh;
-        padding: 0;
+        height: 62vh;
+        padding: clamp(40px, 12vw, 72px) 0 0 0;
     }
 
-    #footerLine, #footerTopBar {
-        display: none;
+    #footerTopBar {
+        display: flex;
+        margin-left: 24px;
+        margin-right: 24px;
+        margin-bottom: 12px;
+    }
+
+    #footerLine {
+        display: block;
+        margin-left: 24px;
+        margin-right: 24px;
+    }
+
+    .footerBackTop {
+        font-size: 15px;
+        padding: 14px;
+        margin: -14px;
+    }
+
+    #footerYear {
+        font-size: clamp(110px, 40vw, 220px);
     }
 }

@@ -19,6 +19,13 @@ function App() {
     const cursor = cursorRef.current
     if (!cursor) return
 
+    // Touch / coarse-pointer devices have no hovering cursor — skip the
+    // custom cursor and its hover tracking so tap states don't get stuck.
+    if (window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+      cursor.style.display = 'none'
+      return
+    }
+
     const setCursor = (size) => gsap.to(cursor, { width: size, height: size, duration: 0.2, ease: 'power2.out', overwrite: 'auto' })
 
     const onMove = (e) => {
@@ -70,9 +77,12 @@ function App() {
         smoothWheel: true,
       })
 
+      const coarsePointer = window.matchMedia('(hover: none), (pointer: coarse)').matches
+
       window.__lenis = lenis
       lenis.on('scroll', () => {
         ScrollTrigger.update()
+        if (coarsePointer) return
         const { x, y } = lastMouse.current
         if (!x && !y) return
         const el = document.elementFromPoint(x, y)

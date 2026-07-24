@@ -1,5 +1,12 @@
 const projectsData = [
   {
+    key: 0,
+    name: 'Asendia',
+    link: 'https://asendia.onrender.com/',
+    year: 2026,
+    image: '/projects/asendia.png',
+  },
+  {
     key: 1,
     name: 'Nile',
     link: 'https://nile-theta.vercel.app',
