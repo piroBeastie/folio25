@@ -72,28 +72,28 @@
 
 @media (max-width: 768px) {
     #footerDiv {
-        height: 62vh;
-        padding: clamp(40px, 12vw, 72px) 0 0 0;
+        height: auto;
+        padding: 40px 0 0 0;
     }
 
     #footerTopBar {
-        display: flex;
-        margin-left: 24px;
-        margin-right: 24px;
+        margin-left: 20px;
+        margin-right: 20px;
         margin-bottom: 12px;
     }
 
     #footerLine {
-        display: block;
-        margin-left: 24px;
-        margin-right: 24px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
 
     .footerItem {
-        font-size: 15px;
+        font-size: 14px;
     }
 
     #footerWordmark {
+        position: static;
+        margin-top: 38vw;
         padding: 0 10px;
     }
 }

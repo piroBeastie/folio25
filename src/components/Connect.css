@@ -96,10 +96,29 @@
 .connectLogo--linkedin{ background-color: #0A66C2; }
 .connectLogo--discord{ background-color: #5865F2; }
 
-/* No hover on touch — drop the hidden arrow so links sit flush right */
+/* Touch: no hover, so the arrow is always shown and the logo preview is off */
 @media (max-width: 768px) {
-    #connectDiv .connectArrow,
-    .connectLogoWrap{
+    #connectDiv {
+        margin-top: 96px;
+        margin-bottom: 96px;
+    }
+
+    #connectDiv p,
+    #connectDiv a,
+    #connectDiv .connectLabel,
+    #connectDiv .connectArrow {
+        font-size: 9.5vw;
+    }
+
+    #connectDiv .connectArrow {
+        width: 0.6em;
+        height: 0.6em;
+        margin-left: 0.12em;
+        opacity: 0.4;
+        transform: none;
+    }
+
+    .connectLogoWrap {
         display: none !important;
     }
 }

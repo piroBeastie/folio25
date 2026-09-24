@@ -83,28 +83,31 @@
 
 @media (max-width: 768px) {
     #projectRefs {
-        margin-bottom: clamp(60px, 12vw, 100px);
+        margin-top: 96px;
     }
 
-    .projectPara {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        align-items: baseline;
-        flex-wrap: wrap;
+    .projectRow + .projectRow {
+        margin-top: 28px;
+    }
+
+    .projectPara,
+    #projectRefs .projectPara > a {
+        font-size: 9.5vw;
+        line-height: 1.05;
     }
 
     .projectPara .sup {
-        order: -1;
-        margin-right: 0.4em;
         visibility: visible;
+        margin-left: 0.35em;
+        font-size: 12px;
+        opacity: 0.55;
     }
 
     .projectPara .projectDesc {
-        flex-basis: 100%;
         max-width: none;
-        margin-top: 0.5em;
-        text-align: right;
+        margin-top: 0.55em;
+        font-size: 15px;
+        line-height: 1.45;
     }
 
     .projectPreviewWrap {
@@ -141,8 +144,7 @@
     }
 
     .mobileVisit {
-        display: block;
-        text-align: right;
+        display: inline-block;
         margin-top: 10px;
         font-size: clamp(13px, 3.6vw, 16px);
         font-weight: 600;

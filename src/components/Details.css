@@ -1,3 +1,11 @@
 #details {
     display: block;
 }
+
+@media (max-width: 768px) {
+    #details p {
+        font-size: 9.6vw;
+        white-space: nowrap;
+        line-height: 1.02;
+    }
+}

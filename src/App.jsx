@@ -213,6 +213,14 @@ function App() {
           yPercent: 0,
           duration: 1.5,
           ease: 'power2.inOut',
+          // Mobile text runs full width, so the settled mark scrolls
+          // away with the page instead of floating over it.
+          onComplete: isMobile
+            ? () => {
+                loader.style.position = 'absolute'
+                loader.style.top = finalLoaderPos + window.scrollY + 'px'
+              }
+            : undefined,
         },
         '<'
       )
