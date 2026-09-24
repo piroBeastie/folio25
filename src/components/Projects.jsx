@@ -27,7 +27,7 @@ function Projects() {
   }, [])
 
   useEffect(() => {
-    data.forEach((proj) => { new Image().src = proj.image })
+    data.forEach((proj) => { if (proj.image) new Image().src = proj.image })
   }, [])
 
   const getFront = () => frontRef.current === 'A' ? imgARef.current : imgBRef.current
@@ -43,7 +43,7 @@ function Projects() {
   const handleEnter = useCallback((proj, e) => {
     activeKey.current = proj.key
     const wrap = wrapRef.current
-    if (!wrap) return
+    if (!wrap || !proj.image) return
 
     if (isVisible.current) {
       const yPos = getYPos(e.currentTarget)
@@ -124,11 +124,16 @@ function Projects() {
               {proj.name}
             </a>
             <sup className="sup">({proj.year})</sup>
+            {proj.description && (
+              <span className="projectDesc">{proj.description}</span>
+            )}
           </p>
           {isMobile && (
             <div className={`mobilePreview${openKey === proj.key ? ' open' : ''}`}>
               <div className="mobilePreviewInner">
-                <img src={proj.image} alt={proj.name} loading="lazy" />
+                {proj.image && (
+                  <img src={proj.image} alt={proj.name} loading="lazy" />
+                )}
                 <a
                   className="mobileVisit"
                   href={proj.link}

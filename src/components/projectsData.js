@@ -1,10 +1,19 @@
 const projectsData = [
   {
+    key: 9,
+    name: 'Stacy',
+    link: 'https://github.com/piroBeastie/Stacy-VoiceReceptionist',
+    year: 2026,
+    image: '',
+    description: 'AI phone receptionist for small businesses. Picks up every call, books appointments, replies in 0.95s.',
+  },
+  {
     key: 0,
     name: 'Asendia',
     link: 'https://asendia.onrender.com/',
     year: 2026,
     image: '/projects/asendia.png',
+    description: 'Real-time AI voice interviewer for ML roles.',
   },
   {
     key: 1,
@@ -12,6 +21,7 @@ const projectsData = [
     link: 'https://nile-theta.vercel.app',
     year: 2026,
     image: '/projects/nile.png',
+    description: 'E-commerce web app, MERN stack.',
   },
   {
     key: 2,
@@ -19,6 +29,7 @@ const projectsData = [
     link: 'https://persona-ai-zeta.vercel.app/',
     year: 2026,
     image: '/projects/personaai.png',
+    description: 'Gemini chat with switchable personas.',
   },
   {
     key: 3,
@@ -26,6 +37,7 @@ const projectsData = [
     link: 'https://legal-sarthi.vercel.app/',
     year: 2026,
     image: '/projects/legalsarthi.png',
+    description: 'AI chatbot that suggests your best legal next step.',
   },
   {
     key: 4,
@@ -33,6 +45,7 @@ const projectsData = [
     link: 'https://newgenius-frontend.vercel.app/',
     year: 2025,
     image: '/projects/newsgenius.png',
+    description: 'News aggregator, React + Python.',
   },
   {
     key: 5,
@@ -40,6 +53,7 @@ const projectsData = [
     link: 'https://pirobeastie.github.io/Planet-Distance/',
     year: 2024,
     image: '/projects/planetdist.png',
+    description: 'Planet distances visualizer, API learning project.',
   },
   {
     key: 6,
@@ -47,6 +61,7 @@ const projectsData = [
     link: 'https://boisterous-mermaid-5baa81.netlify.app/',
     year: 2025,
     image: '/projects/spotifyc.png',
+    description: 'Spotify clone.',
   },
   {
     key: 7,
@@ -54,6 +69,7 @@ const projectsData = [
     link: 'https://pirobeastie.github.io/Book_Recommendation/',
     year: 2024,
     image: '/projects/bookstore.png',
+    description: 'Book recommendation app.',
   },
   {
     key: 8,
@@ -61,6 +77,7 @@ const projectsData = [
     link: 'https://retro-theme-css.vercel.app/',
     year: 2024,
     image: '/projects/retrocss.png',
+    description: 'Retro-themed CSS experiment.',
   },
 ]
 

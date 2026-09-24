@@ -19,6 +19,17 @@ const connectData = [
     name: 'LinkedIn',
     link: 'https://linkedin.com/in/nanakchahal',
   },
+  {
+    key: 5,
+    name: 'Discord',
+    handle: '.fakeyt',
+  },
+  {
+    key: 6,
+    name: 'Resume',
+    link: '/Nanakjot_Singh_Chahal_Resume.pdf',
+    download: true,
+  },
 ]
 
 export default connectData
