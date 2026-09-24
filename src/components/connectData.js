@@ -22,6 +22,7 @@ const connectData = [
   {
     key: 5,
     name: 'Discord',
+    link: 'https://discord.com/users/862363233541423134',
     handle: '.fakeyt',
   },
   {
