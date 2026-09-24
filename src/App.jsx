@@ -5,6 +5,7 @@ import Lenis from 'lenis'
 import Name from './components/Name'
 import Scrollable from './components/Scrollable'
 import Footer from './components/Footer'
+import Resume from './components/Resume'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -156,12 +157,13 @@ function App() {
       gsap.set(fillHahal, { width: initialFillHahal + 'px' })
 
       gsap.set('#content', { opacity: 0 })
+      gsap.set('#resumeLink', { opacity: 0, y: -10 })
       gsap.set('#details p', { opacity: 0, y: 50 })
       gsap.set('.projectPara', { opacity: 0, y: 50 })
       gsap.set('#connectDiv p', { opacity: 0, y: 50 })
-      gsap.set('#footerYear', { opacity: 0, y: 120 })
+      gsap.set('#footerWordmark', { opacity: 0, y: 120 })
       gsap.set('#footerLine', { scaleX: 0 })
-      gsap.set('.footerBackTop', { opacity: 0, y: 20 })
+      gsap.set('.footerItem', { opacity: 0, y: 20 })
 
       // ── Master timeline ───────────────────────────────────────────
       const tl = gsap.timeline()
@@ -226,6 +228,11 @@ function App() {
         },
         '-=0.7'
       )
+      tl.to(
+        '#resumeLink',
+        { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out' },
+        '<'
+      )
 
       // 5. Stagger reveal details / projects / connect
       tl.to(
@@ -252,7 +259,7 @@ function App() {
         scrollTrigger: { trigger: '#footerDiv', start: 'top 70%' },
       })
 
-      gsap.to('.footerBackTop', {
+      gsap.to('.footerItem', {
         opacity: 1,
         y: 0,
         duration: 1.0,
@@ -261,15 +268,24 @@ function App() {
         scrollTrigger: { trigger: '#footerDiv', start: 'top 75%' },
       })
 
-      // Year: scroll-trigger on desktop, in-timeline on mobile (40vh footer)
+      // The corner mark hides while the footer wordmark is on screen
+      // so the name never appears twice.
+      ScrollTrigger.create({
+        trigger: '#footerDiv',
+        start: 'top 40%',
+        onEnter: () => gsap.to(loader, { autoAlpha: 0, duration: 0.4, ease: 'power2.out' }),
+        onLeaveBack: () => gsap.to(loader, { autoAlpha: 1, duration: 0.5, ease: 'expo.out' }),
+      })
+
+      // Wordmark: scroll-trigger on desktop, in-timeline on mobile (40vh footer)
       if (isMobile) {
         tl.to(
-          '#footerYear',
+          '#footerWordmark',
           { opacity: 1, y: 0, duration: 1.4, ease: 'expo.out' },
           '-=0.3'
         )
       } else {
-        gsap.to('#footerYear', {
+        gsap.to('#footerWordmark', {
           opacity: 1,
           y: 0,
           duration: 1.4,
@@ -291,6 +307,7 @@ function App() {
     <div className={theme}>
       <div ref={cursorRef} id="custom-cursor" />
       <Name />
+      <Resume />
       <div id="content">
         <Scrollable />
         <div className={theme === 'light' ? 'dark' : 'light'}>

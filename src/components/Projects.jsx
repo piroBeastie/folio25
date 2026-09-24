@@ -106,20 +106,22 @@ function Projects() {
   return (
     <div id="projectRefs">
       <div className="projectPreviewWrap" ref={wrapRef} style={{ display: 'none' }}>
-        <img className="projectPreview" ref={imgARef} src="" alt="" />
-        <img className="projectPreview" ref={imgBRef} src="" alt="" />
+        <img className="projectPreview" ref={imgARef} alt="" />
+        <img className="projectPreview" ref={imgBRef} alt="" />
       </div>
-      {data.map((proj) => (
+      {data.map((proj) => {
+        // tel: links (Stacy) dial straight away — no new tab, no mobile preview
+        const isWeb = proj.link.startsWith('http')
+        return (
         <div className="projectRow" key={proj.key}>
           <p className="projectPara">
             <a
               href={proj.link}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(isWeb ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               className={isMobile && openKey === proj.key ? 'active' : undefined}
               onMouseEnter={isMobile ? undefined : (e) => handleEnter(proj, e)}
               onMouseLeave={isMobile ? undefined : handleLeave}
-              onClick={isMobile ? (e) => handleMobileTap(proj, e) : undefined}
+              onClick={isMobile && isWeb ? (e) => handleMobileTap(proj, e) : undefined}
             >
               {proj.name}
             </a>
@@ -128,7 +130,7 @@ function Projects() {
               <span className="projectDesc">{proj.description}</span>
             )}
           </p>
-          {isMobile && (
+          {isMobile && isWeb && (
             <div className={`mobilePreview${openKey === proj.key ? ' open' : ''}`}>
               <div className="mobilePreviewInner">
                 {proj.image && (
@@ -146,7 +148,8 @@ function Projects() {
             </div>
           )}
         </div>
-      ))}
+        )
+      })}
     </div>
   )
 }

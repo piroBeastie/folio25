@@ -8,61 +8,33 @@
 
 #footerTopBar{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: baseline;
     margin-left: 42%;
     margin-right: 24px;
     margin-bottom: 14px;
 }
 
-.footerBackTop{
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    color: inherit;
-    padding: 16px 24px;
-    margin: -16px -24px;
-    font-family: inherit;
+.footerItem{
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: 1;
-    display: inline-flex;
-    align-items: baseline;
 }
 
-.footerBackTop *,
-.letterWrapper,
-.letterStack,
-.letterStack > span{
+.footerItem *{
     font-size: inherit;
     font-weight: inherit;
     letter-spacing: inherit;
 }
 
-.letterWrapper{
-    display: inline-block;
-    overflow: hidden;
-    height: 1em;
-    line-height: 1;
-    vertical-align: top;
-    white-space: pre;
+.footerMeta{
+    opacity: 0.55;
+    font-variant-numeric: tabular-nums;
 }
 
-.letterStack{
-    display: block;
-    transform: translateY(-1em);
-    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
-    transition-delay: var(--delay, 0s);
-}
-
-.letterStack > span{
-    display: block;
-    line-height: 1;
-}
-
-.footerBackTop.hovered .letterStack{
-    transform: translateY(0);
+.footerDot{
+    margin: 0 0.35em;
 }
 
 #footerLine{
@@ -74,18 +46,22 @@
     transform-origin: left center;
 }
 
-#footerYear{
+#footerWordmark{
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    text-align: center;
-    font-size: clamp(140px, 32vw, 500px);
-    line-height: 0.85;
+    padding: 0 16px;
+    line-height: 0.74;
     white-space: nowrap;
-    background-color: transparent;
     letter-spacing: -0.04em;
     opacity: 0;
+}
+
+#footerWordmark > span{
+    display: inline-block;
+    font-size: inherit;
+    letter-spacing: inherit;
 }
 
 @media (max-width: 1024px) {
@@ -113,13 +89,11 @@
         margin-right: 24px;
     }
 
-    .footerBackTop {
+    .footerItem {
         font-size: 15px;
-        padding: 14px;
-        margin: -14px;
     }
 
-    #footerYear {
-        font-size: clamp(110px, 40vw, 220px);
+    #footerWordmark {
+        padding: 0 10px;
     }
 }

@@ -2,10 +2,10 @@ const projectsData = [
   {
     key: 9,
     name: 'Stacy',
-    link: 'https://github.com/piroBeastie/Stacy-VoiceReceptionist',
+    link: 'tel:+12138451295',
     year: 2026,
     image: '',
-    description: 'AI phone receptionist for small businesses. Picks up every call, books appointments, replies in 0.95s.',
+    description: 'AI phone receptionist for small businesses. Answers every call and books appointments, replying in 0.95s. Call it: +1 213 845 1295.',
   },
   {
     key: 0,
@@ -13,7 +13,7 @@ const projectsData = [
     link: 'https://asendia.onrender.com/',
     year: 2026,
     image: '/projects/asendia.png',
-    description: 'Real-time AI voice interviewer for ML roles.',
+    description: 'Real-time voice interviewer for ML roles. Duplex speech-to-speech on Gemini Live, with barge-in and a scored report.',
   },
   {
     key: 1,
@@ -21,7 +21,7 @@ const projectsData = [
     link: 'https://nile-theta.vercel.app',
     year: 2026,
     image: '/projects/nile.png',
-    description: 'E-commerce web app, MERN stack.',
+    description: 'Full-stack furniture store on MERN. JWT auth, cart and order history, Stripe checkout.',
   },
   {
     key: 2,
@@ -29,7 +29,7 @@ const projectsData = [
     link: 'https://persona-ai-zeta.vercel.app/',
     year: 2026,
     image: '/projects/personaai.png',
-    description: 'Gemini chat with switchable personas.',
+    description: 'Chat with AI personas of three Scaler educators, each with its own voice. React, FastAPI and Gemini.',
   },
   {
     key: 3,
@@ -37,7 +37,7 @@ const projectsData = [
     link: 'https://legal-sarthi.vercel.app/',
     year: 2026,
     image: '/projects/legalsarthi.png',
-    description: 'AI chatbot that suggests your best legal next step.',
+    description: 'Describe a legal problem, get step-by-step guidance citing Indian law. Gemini grounded by a curated rules engine.',
   },
   {
     key: 4,
@@ -45,39 +45,7 @@ const projectsData = [
     link: 'https://newgenius-frontend.vercel.app/',
     year: 2025,
     image: '/projects/newsgenius.png',
-    description: 'News aggregator, React + Python.',
-  },
-  {
-    key: 5,
-    name: 'Planet Dist',
-    link: 'https://pirobeastie.github.io/Planet-Distance/',
-    year: 2024,
-    image: '/projects/planetdist.png',
-    description: 'Planet distances visualizer, API learning project.',
-  },
-  {
-    key: 6,
-    name: 'Spotify C',
-    link: 'https://boisterous-mermaid-5baa81.netlify.app/',
-    year: 2025,
-    image: '/projects/spotifyc.png',
-    description: 'Spotify clone.',
-  },
-  {
-    key: 7,
-    name: 'Book Store',
-    link: 'https://pirobeastie.github.io/Book_Recommendation/',
-    year: 2024,
-    image: '/projects/bookstore.png',
-    description: 'Book recommendation app.',
-  },
-  {
-    key: 8,
-    name: 'Retro CSS',
-    link: 'https://retro-theme-css.vercel.app/',
-    year: 2024,
-    image: '/projects/retrocss.png',
-    description: 'Retro-themed CSS experiment.',
+    description: 'AI news aggregator. Pulls from multiple sources, writes summaries with Gemini, prioritises real article images.',
   },
 ]
 
